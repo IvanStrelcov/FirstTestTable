@@ -48,12 +48,15 @@ Row.prototype._createRow = function() {
     return row;
 }
 Row.prototype._createButton = function() {
+    var td = new Column('');
     var button = new Btn('DELETE ROW');
-    return button;
+    var resultTd = td.render();
+    resultTd.appendChild(button.render());
+    return resultTd;
 }
 Row.prototype.render = function() {
     var finishRow = this._createRow();
-    var button = this._createButton().render();
+    var button = this._createButton();
     finishRow.appendChild(button);
     return finishRow;
 }
@@ -106,7 +109,7 @@ function deleteRow (event) {
   event.preventDefault();
   var self = event.target;
   if (self.innerHTML == 'DELETE ROW') {
-    tbodyTarget.deleteRow(self.parentNode.parentNode.rowIndex);
+    tbodyTarget.deleteRow(self.parentNode.parentNode.parentNode.rowIndex);
   } else {
     return false;
   }
