@@ -133,7 +133,7 @@ function sortTable (event) {
           case 'Last Name':
           case 'email':
             compare = function(rowA, rowB) {
-              return rowA.cells[colNum].innerHTML > rowB.cells[colNum].innerHTML ? 1 : -1;
+              return rowA.cells[colNum].innerHTML.toLowerCase() > rowB.cells[colNum].innerHTML.toLowerCase() ? 1 : -1;
             };
             break;
         }
