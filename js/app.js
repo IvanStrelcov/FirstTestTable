@@ -136,12 +136,10 @@ $(document).ready( function () {
               break;
           }
       rowsArray.sort(compare);
-      var tbody = $('<tbody></tbody>');
-      $('tbody').remove();
+      $('tbody tr').remove();
       for (var i = 0; i < rowsArray.length; i++) {
-        $(tbody).append(rowsArray[i]);
+        $('tbody').append(rowsArray[i]);
       }
-      $('table').append(tbody);
     }
 
     var inputValue;
