@@ -143,17 +143,21 @@ $(document).ready( function () {
     }
 
     var inputValue;
+    var firstInputValue;
 
     function addInput (event) {
-        event.preventDefault();
         var self = event.target;
         if ($(self).is('button')) {
-          return false;
+            return false;
         }
-        inputValue = $(self).html();
+        if ($(self).is('input')) {
+            return false;
+        }
+        firstInputValue = $(self).text();
+        inputValue = $(self).text();
         var input = $('<input/>');
         $(input).val(inputValue);
-        $(self).html('');
+        $(self).text('');
         $(self).append(input);
         $(input).focus();
     }
@@ -161,10 +165,11 @@ $(document).ready( function () {
     function saveValue (event) {
         var self = event.target;
         inputValue = $(self).val();
+        if (inputValue == '' || undefined || null) inputValue = firstInputValue;
     }
 
     function changeValue (event) {
         var self = event.target;
-        $(self).parent().remove('input').html(inputValue);
+        $(self).parent().remove('input').text(inputValue);
     }
 });
