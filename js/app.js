@@ -149,11 +149,8 @@ $(document).ready( function () {
     function addInput (event) {
         event.preventDefault();
         var self = event.target;
-        var buttons = $('button');
-        for (var i = 0; i < buttons.length; i++) {
-          if (self.contains(buttons[i])){
-            return false;
-          }
+        if ($(self).is('button')) {
+          return false;
         }
         inputValue = $(self).html();
         var input = $('<input/>');
