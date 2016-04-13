@@ -101,7 +101,7 @@ $(document).ready( function () {
     $('table thead').delegate('button', 'click', sortTable);
     $('table tbody').delegate('button', 'click', deleteRow);
     $('table tbody').delegate('td', 'click', addInput);
-    $('table tbody').delegate('input', 'focus', saveValue);
+    $('table tbody').delegate('input', 'input', saveValue);
     $('table tbody').delegate('input', 'blur', changeValue);
 
     function deleteRow (event) {
@@ -170,8 +170,6 @@ $(document).ready( function () {
 
     function changeValue (event) {
         var self = event.target;
-        $(self).parent()
-               .remove('input')
-               .html(inputValue);
+        $(self).parent().remove('input').html(inputValue);
     }
 });
